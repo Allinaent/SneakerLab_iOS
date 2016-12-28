@@ -1,0 +1,374 @@
+//
+//  PrefixHeader.pch
+//  SneakerLab
+//
+//  Created by Jason cao on 2016/10/9.
+//  Copyright © 2016年 Jason cao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+
+//一、全局的头文件
+#import "MBManager.h"
+#import "AFNetworking.h" //网络请求
+#import "UIImageView+PHPUrl.h"
+#import "UIImageView+WebCache.h" //给imageView加载图片
+#import "FactoryUI.h" //工厂类
+#import "CWStarView.h"
+#import "NSString+NSString_MD5.h"
+#import "UIViewController+UIViewController_TimesTamp.h"
+#import "CWAPIClient.h"
+#import "UIColor+hex.h"
+#import "UIView+UIView___TimesTamp.h"
+#import "UIView+Extension.h"
+#import "LoginController.h"
+#import "UIButton+GSet.h"
+#import "UIImage+GSet.h"
+#import "LJButton.h"
+#import "LJComponentHeader.h"
+#import "Masonry.h"//必须将定义masonry的宏写在masonry.h之上
+#import "NSString+YCI.h"//拼接字符串
+#import "PHPNetwork.h"
+#import "GTMNSString+HTML.h"
+#import "NSDictionary+JsonString.h"
+#import "UIImageView+PHPUrl.h"
+#import "UIBarButtonItem+Extension.h"
+#import <ReactiveObjC/ReactiveObjC.h>
+
+//二、全局的宏定义
+
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width //屏幕宽度
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height //屏幕高度
+#define BottomH 50.0
+#define TopTabBarH 44.0
+#define NaviBarH 64.0
+
+
+#define DEFAULT_FONT @"HelveticaNeue"
+#define FONT_17 [UIFont fontWithName:@"HelveticaNeue" size:17]
+#define FONT_16 [UIFont fontWithName:@"HelveticaNeue" size:16]
+#define FONT_15 [UIFont fontWithName:@"HelveticaNeue" size:15]
+#define FONT_14 [UIFont fontWithName:@"HelveticaNeue" size:14]
+#define FONT_13 [UIFont fontWithName:@"HelveticaNeue" size:13]
+#define FONT_12 [UIFont fontWithName:@"HelveticaNeue" size:12]
+#define FONT_11 [UIFont fontWithName:@"HelveticaNeue" size:11]
+#define COLOR_3 [UIColor colorWithHexString:@"#333333" alpha:1.0f]
+#define COLOR_6 [UIColor colorWithHexString:@"#666666" alpha:1.0f]
+#define COLOR_8 [UIColor colorWithHexString:@"#888888" alpha:1.0f]
+#define COLOR_D8 [UIColor colorWithHexString:@"#D8D8D8" alpha:1.0f]
+#define COLOR_D [UIColor colorWithHexString:@"#DDDDDD" alpha:1.0f]
+#define COLOR_9 [UIColor colorWithHexString:@"#999999" alpha:1.0f]
+#define COLOR_FA [UIColor colorWithHexString:@"#FAFAFA" alpha:1.0f]
+#define COLOR_RED [UIColor colorWithHexString:@"#DE4536" alpha:1.0f]
+#define Color(r,g,b,al) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:al]
+#endif
+
+#define DebugLog(s, ...) NSLog(@"%s(%d): %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+
+#ifdef DEBUG
+#define LJLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ## __VA_ARGS__);
+#define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#else
+#define LJLog(fmt, ...)
+#endif
+//sneakerlab
+#if PREDUPLICATE==0
+    #ifdef DEBUG
+        #define PRE_URL @"http://api.fangzhich.com/"
+    #else
+        #define PRE_URL @"http://www.fangzhich.com/"
+    #endif
+    #define  loadFailImg [UIImage imageNamed:@"product_image_placeholder"]
+    #define iconImg [UIImage imageNamed:@"80x80"]
+    #define headImg [UIImage imageNamed:@"头像－抽屉"]
+    #define headBackImg [UIImage imageNamed:@"背景图"]
+    #define backgroundImg [UIImage imageNamed:@"背景"]
+    #define returnPolicyImg [UIImage imageNamed:@"退货条款"]
+    #define PAYPEL_PRODUCTION @"AdHjPzu6SGZIwnWKNHn7nXh4DDGOcStAttubBkFnTNlFvWf0IRS5tv3IDU6tYej5HTh7arRWR63VknEu"
+    #define PAYPEL_SANDBOX @"AVODZnzbtsZpms59_ymaPSVweZxTtrir8tw058SzhtjjLdomfZAqKrG71sgvHIneqdWEwe9bQG41Szy6"
+//ivankajingle
+#elif PREDUPLICATE==1
+    #ifdef DEBUG
+        #define PRE_URL @"http://ij.fangzhich.com/"
+    #else
+        #define PRE_URL @"http://ij.fangzhich.com/"
+    #endif
+    #define  loadFailImg [UIImage imageNamed:@"product_image_placeholder_ivanka"]
+    #define iconImg [UIImage imageNamed:@"80x80"]
+    #define headImg [UIImage imageNamed:@"头像－抽屉"]
+    #define headBackImg [UIImage imageNamed:@"背景图"]
+    #define backgroundImg [UIImage imageNamed:@"背景"]
+    #define returnPolicyImg [UIImage imageNamed:@"IvankaJingle-Return policy "]
+    #define PAYPEL_PRODUCTION @"AdHjPzu6SGZIwnWKNHn7nXh4DDGOcStAttubBkFnTNlFvWf0IRS5tv3IDU6tYej5HTh7arRWR63VknEu"
+    #define PAYPEL_SANDBOX @"AVODZnzbtsZpms59_ymaPSVweZxTtrir8tw058SzhtjjLdomfZAqKrG71sgvHIneqdWEwe9bQG41Szy6"
+//centerpiece
+#elif PREDUPLICATE==2
+    #ifdef DEBUG
+    #define PRE_URL @"https://piece.fangzhich.com/"
+    #else
+    #define PRE_URL @"https://piece.fangzhich.com/"
+    #endif
+    #define  loadFailImg [UIImage imageNamed:@"加载图-CenterPiece"]
+    #define iconImg [UIImage imageNamed:@"加载图-CenterPiece"]
+    #define headImg [UIImage imageNamed:@"加载图-CenterPiece"]
+    #define headBackImg [UIImage imageNamed:@"侧栏背景"]
+    #define backgroundImg [UIImage imageNamed:@""]
+    #define returnPolicyImg [UIImage imageNamed:@"CenterPiece-Return Policy"]
+    #define PAYPEL_PRODUCTION @"AaPG0Pf_7gFfR6M7e6nPFgLAyCV93Wnes5is25zpNCggXu7bqI3Ayz3_v35dFUdReliQUGK5BNrZ4o6o"
+    #define PAYPEL_SANDBOX @"AQj_RBFSOOTwm9roSfdq_HQi01-kDGSc9WSA1I19vWIFOFP3Z0uG1RGcq2O2_fLCFATYbHVx3O9g_bee"
+//exclusive
+#elif PREDUPLICATE==3
+    #ifdef DEBUG
+    #define PRE_URL @"https://wood.fangzhich.com/"
+    #else
+    #define PRE_URL @"https://wood.fangzhich.com/"
+    #endif
+    #define  loadFailImg [UIImage imageNamed:@"加载图-exclusive"]
+    #define iconImg [UIImage imageNamed:@"加载图-exclusive"]
+    #define headImg [UIImage imageNamed:@"加载图-exclusive"]
+    #define headBackImg [UIImage imageNamed:@"侧栏背景"]
+    #define backgroundImg [UIImage imageNamed:@""]
+    #define returnPolicyImg [UIImage imageNamed:@"Exclusive-Return Policy"]
+    #define PAYPEL_PRODUCTION @"Aen-z1JuzF6Ccsr-ZZ61WR7fg6S_tKVIhtKpjMzJW9iUY9_8KRcKqKEzrqmvhhlH1BdP2_SQHbxkRsyu"
+    #define PAYPEL_SANDBOX @"Ab2UNVpIcN34UcOBTG8ipsdShi6Q63Bo04vDhFk2A97BcXcI8_FMiwbek7TVuSI6kQtVd-27wEGzjqLJ"
+//hilarytear
+#elif PREDUPLICATE==4
+    #ifdef DEBUG
+    #define PRE_URL @"https://ht.fangzhich.com/"
+    #else
+    #define PRE_URL @"https://ht.fangzhich.com/"
+    #endif
+    #define  loadFailImg [UIImage imageNamed:@"加载图-HilaryTear"]
+    #define iconImg [UIImage imageNamed:@"加载图-HilaryTear"]
+    #define headImg [UIImage imageNamed:@"加载图-HilaryTear"]
+    #define headBackImg [UIImage imageNamed:@"侧栏背景"]
+    #define backgroundImg [UIImage imageNamed:@""]
+    #define returnPolicyImg [UIImage imageNamed:@"HilaryTear-Return Policy"]
+    #define PAYPEL_PRODUCTION @"Acyn9Z2Hi_Z2INJHtpO39eFt7PnE9vSgKWLguhVnVAz-HIm2G2RvGxe3HEmYEFRa7KfGC8H7juwA5Sjo"
+    #define PAYPEL_SANDBOX @"AYbCQdcn84T2oDUUukmZiGve9HmH2IYT9_0Ee5oi2LIRvSFVC_lSKK_EwinrlN8-DAQk64CExAmb6j6W"
+//sneakercrunch
+#elif PREDUPLICATE==5
+    #ifdef DEBUG
+    #define PRE_URL @"https://sc.fangzhich.com/"
+    #else
+    #define PRE_URL @"https://sc.fangzhich.com/"
+    #endif
+    #define  loadFailImg [UIImage imageNamed:@"加载图-SneakerCrunch"]
+    #define iconImg [UIImage imageNamed:@"加载图-SneakerCrunch"]
+    #define headImg [UIImage imageNamed:@"加载图-SneakerCrunch"]
+    #define headBackImg [UIImage imageNamed:@"侧栏背景"]
+    #define backgroundImg [UIImage imageNamed:@""]
+    #define returnPolicyImg [UIImage imageNamed:@"SneakerCrunch-Return Policy"]
+    #define PAYPEL_PRODUCTION @"AVgy1weg3ryscw8Q5HPj0AHazh8iDa6jPAKdrBm69PDYBiXKMIFkN3RU3lvasmcdgy27iqlmLJvPH0s"
+    #define PAYPEL_SANDBOX @"AebU8bC08z7XXhKwlIpqW9g_eytMFloGAWrlAjaWdL7S5Y0bwi3_Xxx4t-X5HpnJHf1VIuc3fbjHTqpm"
+//styl
+#elif PREDUPLICATE==6
+    #ifdef DEBUG
+    #define PRE_URL @"https://styl.fangzhich.com/"
+    #else
+    #define PRE_URL @"https://styl.fangzhich.com/"
+    #endif
+    #define  loadFailImg [UIImage imageNamed:@"加载图-STYL"]
+    #define iconImg [UIImage imageNamed:@"加载图-STYL"]
+    #define headImg [UIImage imageNamed:@"加载图-STYL"]
+    #define headBackImg [UIImage imageNamed:@"侧栏背景"]
+    #define backgroundImg [UIImage imageNamed:@""]
+    #define returnPolicyImg [UIImage imageNamed:@"STYL-Return Policy"]
+    #define PAYPEL_PRODUCTION @"AWAi3XyExCkhZYPMBg5349yiTry-hGZewVsHPTNaGoYt47hP6HgUf8ogkgFarzTdFz7kumZYlN3Py_4n"
+    #define PAYPEL_SANDBOX @"AZJ9gOhMZfYTTPUH8UVahTLxacrxfzWp_VG7VctM-m2R1TPnQz9-TejJTXtVk3uZKDGwefP1cW2d3Lyv"
+//wantedsole
+#elif PREDUPLICATE==7
+    #ifdef DEBUG
+    #define PRE_URL @"https://ws.fangzhich.com/"
+    #else
+    #define PRE_URL @"https://ws.fangzhich.com/"
+    #endif
+    #define  loadFailImg [UIImage imageNamed:@"加载图-WantedSole"]
+    #define iconImg [UIImage imageNamed:@"加载图-WantedSole"]
+    #define headImg [UIImage imageNamed:@"加载图-WantedSole"]
+    #define headBackImg [UIImage imageNamed:@"侧栏背景"]
+    #define backgroundImg [UIImage imageNamed:@""]
+    #define returnPolicyImg [UIImage imageNamed:@"WantedSole-Return Policy"]
+    #define PAYPEL_PRODUCTION @"AaqsKFJvXVV9P13-ETKanOJJAAJobt9NyQD5yWi1vLSAw78IMUYFCxahpgtvNqL8donNfQs7zncE-whW"
+    #define PAYPEL_SANDBOX @"AeVc-hnIwMY2TL-BIJiM4FnC4P4B5v66yMycRyYKalzQDARLy8vmQT0zgiheqx2OFhrzueI67F0XaBZz"
+#endif
+
+
+/** 接口相关 */
+#define REGISTER_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/register", nil]
+
+#define LOGIN_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/login", nil]
+
+#define LOGOUT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/signout", nil]
+
+//分类列表
+#define CATEGORY_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/category", nil]
+
+//商品列表
+#define PRODUCT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/product", nil]
+
+//商品详情
+#define PRODUCTDETAIL_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/product/getProduct", nil]
+
+//购物车
+#define SHOPPINGCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cart", nil]
+
+//添加购物车
+#define ADDSHOPPING_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cart/add", nil]
+
+//编辑购物车
+#define EDITSHOPPING_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cart/edit", nil]
+
+//删除购物车
+#define DELETESHOPPINGCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cart/remove", nil]
+
+//结算的接口(后来改为placeorder页面显示内容的接口)
+#define CHECKOUT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/checkout", nil]
+
+//收藏列表
+#define COllECTION_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/wishlist", nil]
+
+//添加收藏
+#define ADDCOLLECTION_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/wishlist/add", nil]
+
+//删除收藏
+#define DELCOLLECTION_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/wishlist/delete", nil]
+
+//推荐商品
+#define RATEPRODUCT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/product/getPopularProducts", nil]
+
+//评价列表
+#define RATING_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/product/getReview", nil]
+
+//国家列表
+#define COUNTRIES_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/common/country", nil]
+
+//区域列表
+#define STATES_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/common/zone", nil]
+
+//获取信用卡
+#define GETCREDITCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/credit", nil]
+
+//添加信用卡
+#define ADDCREDITCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/credit/add", nil]
+
+//编辑信用卡
+#define EDITCREDitCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/credit/edit", nil]
+
+//获取地址
+#define GETADDRESS_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/address", nil]
+
+//添加地址
+#define ADDADDRESS_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/address/add", nil]
+
+//编辑地址
+#define EDITADDRESS_URL  [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/address/edit", nil]
+
+//订单列表
+#define DINGDANLIEBIAO_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/order/getAccountOrders", nil]
+
+//订单的状态
+#define DINGDANSTATUS_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/order/getAccountStatusOrder", nil]
+
+//订单的详情
+#define DINGDANDETAL_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/order/getAccountOrder", nil]
+
+//商品评论
+#define REVIEWPRODUCT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/review/addReview", nil]
+
+//修改头像
+#define MODIFYHEAD_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/customer/editAvatar", nil]
+
+//个人中心
+#define PERSONINFO_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/customer", nil]
+
+//修改个人中心
+#define CHANGEPERSONINFO_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/customer/edit", nil]
+
+//修改邮箱
+#define CHANGEEMAILINFO_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/customer/editEmail", nil]
+
+//修改密码
+#define CHANGEPASSWORD_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/customer/editPwd", nil]
+
+//推送接口
+#define UPLOADTOKEN_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/firebasetoken/add", nil]
+
+//移动到暂存
+#define MOVETEMP_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cartback/moveOutCart", nil]
+
+//移动到购物车
+#define MOVETOCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cartback/moveToCart", nil]
+
+//删除购物车暂存
+#define DELETECART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cartback/removeCartback", nil]
+
+//信用卡列表
+#define CARDLIST_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/credit", nil]
+
+//获取信用卡信息
+#define CARDINFO_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/credit/show", nil]
+
+//删除信用卡
+#define CARDDELETE_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/credit/delete", nil]
+
+//地址列表
+#define ADDRESSLIST_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/address", nil]
+
+//地址列表
+#define ADDRESSSHOW_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/address/show", nil]
+
+//地址列表
+#define ADDRESSDELETE_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/address/delete", nil]
+
+//placeorder
+#define PLACEORDER_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/placeorder", nil]
+
+//facebook登录
+#define FACEBOOK_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/facebook", nil]
+
+//修改支付方式
+#define SETPAYMENT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/customer/setDefaultPayment", nil]
+
+#define APPKEY @"NDk4ZWNhOGNiZGExY2Y5MjhmYzdhYTljMzU2OTQwMDg"
+#define APIKEY @"ok9FUxp8YADCQyPmjfPthKcE9tkKHgoRXvFtzaPQAM9GVsIFZkpPZzfvc3I4bVywJxnIhkOwiF94EvpgsANpwbxtuTN0aVL18ro1oNtiMBqbPaiT4mLuljWc76jcip4ZijUsFHRnaQIdSfTKHJueVEdCaARwAf3XLZYcRWS5hafhAnSMujmkgdZcuOfpUGy0K8sUeTswEUiVBiBq8qzMzp8GpfKRdjJmgxEsjBOpsKVDEWbY4vaOW5lomG14KtxP"
+#define MYDEVICEID @"3533310733333335333107333333089860113819002470472"
+#define CWTOKEN [[NSUserDefaults standardUserDefaults] objectForKey:@"CWToken"]
+#define CWEMAIL [[NSUserDefaults standardUserDefaults] objectForKey:@"CWEmail"]
+#define NUMBERS @"0123456789/\n"
+
+//关于nsuserdefaults中的宏定义
+#define UD_CARD @"credit_card"
+#define UD_SHIPADDRESS @"shipping_address"
+#define UD_HEADURL @"head_url"
+#define UD_FIRSTNAME @"firstname"
+#define UD_LASTNAME @"lastname"
+#define UD_PHONE @"phone"
+#define UD_SEX @"sex"
+#define UD_AGE @"age"
+#define UD_EMAIL @"email"
+#define UD_FACEBOOK @"facebook"
+#define UD_PAY @"payway"
+
+#define SCREEN_MARGIN 20
+
+#define SET_NAV_MIDDLE NSArray *viewControllerArray = [self.navigationController viewControllers];\
+long previousViewControllerIndex = [viewControllerArray indexOfObject:self] - 1;\
+UIViewController *previous;\
+if (previousViewControllerIndex >= 0) {\
+    previous = [viewControllerArray objectAtIndex:previousViewControllerIndex];\
+    previous.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]\
+                                                 initWithTitle:@""\
+                                                 style:UIBarButtonItemStylePlain\
+                                                 target:self\
+                                                 action:nil];\
+}
+
+
+
+#endif /* PrefixHeader_pch */

@@ -1,0 +1,127 @@
+//
+//  PrefixHeader.pch
+//  SneakerLab
+//
+//  Created by Jason cao on 2016/10/9.
+//  Copyright © 2016年 Jason cao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+
+//一、全局的头文件
+#import "AFNetworking.h" //网络请求
+//#import "MJRefresh.h" //下拉刷新，上拉加载
+//#import "MBProgressHUD.h" // 活动指示器
+#import "UIImageView+WebCache.h" //给imageView加载图片
+//#import "UIButton+WebCache.h" //给button加载图片
+#import "FactoryUI.h" //工厂类
+//#import "UMSocial.h" //友盟分享
+#import "CWStarView.h" // 星级
+#import "NSString+NSString_MD5.h"
+#import "UIViewController+UIViewController_TimesTamp.h"
+#import "CWAPIClient.h"
+#import "UIColor+hex.h"
+#import "UIView+UIView___TimesTamp.h"
+#import "UIView+Extension.h"
+#import "LoginController.h"
+#import "Masonry.h"
+#import "NSString+YCI.h"//拼接字符串
+#import "PHPNetwork.h"
+
+//二、全局的宏定义
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width //屏幕宽度
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height //屏幕高度
+#endif
+
+#ifdef DEBUG
+#define PRE_URL @"http://api.fangzhich.com/"
+#else
+#define PRE_URL @"http://www.fangzhich.com/"
+#endif
+
+
+/** 接口相关 */
+#define REGISTER_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/register", nil]
+
+#define LOGIN_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/login", nil]
+
+#define LOGOUT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/signout", nil]
+
+//分类列表
+#define CATEGORY_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/category", nil]
+
+//商品列表
+#define PRODUCT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/product", nil]
+
+//商品详情
+#define PRODUCTDETAIL_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/product/getProduct", nil]
+
+//购物车
+#define SHOPPINGCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cart", nil]
+
+//添加购物车
+#define ADDSHOPPING_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cart/add", nil]
+
+//删除购物车
+#define DELETESHOPPINGCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/cart/remove", nil]
+
+//结算的接口
+#define CHECKOUT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/checkout", nil]
+
+//编辑信用卡
+
+//收藏列表
+#define COllECTION_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/wishlist", nil]
+
+//添加收藏
+#define ADDCOLLECTION_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/wishlist/add", nil]
+
+//推荐商品
+#define RATEPRODUCT_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/product/getPopularProducts", nil]
+
+//评价列表
+#define RATING_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/product/getReview", nil]
+
+//国家列表
+#define COUNTRIES_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/common/country", nil]
+
+//区域列表
+#define STATES_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/common/zone", nil]
+
+//添加信用卡
+#define ADDCREDITCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/credit/add", nil]
+
+//编辑信用卡
+#define EDITCREDitCART_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/credit/edit", nil]
+
+//添加地址
+#define ADDADDRESS_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/address/add", nil]
+
+//编辑地址
+#define EDITADDRESS_URL  [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/address/edit", nil]
+
+//订单列表
+#define DINGDANLIEBIAO_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/order/getAccountOrders", nil]
+
+//订单的状态
+<<<<<<< HEAD
+#define DINGDanSTATUS_URL @"http://api.fangzhich.com/index.php?route=api/order/getAccountStatusOrder"
+//订单的详情
+#define DINGDANDETAL_URL @"http://api.fangzhich.com/index.php?route=api/order/getAccountOrder"
+
+=======
+#define DINGDanSTATUS_URL [NSString JoinedWithSubStrings:PRE_URL, @"index.php?route=api/order/getAccountStatusOrder", nil]
+>>>>>>> 38cae4b36d748e481504f627c26ad7b838e04351
+
+#define APPKEY @"NDk4ZWNhOGNiZGExY2Y5MjhmYzdhYTljMzU2OTQwMDg"
+#define APIKEY @"ok9FUxp8YADCQyPmjfPthKcE9tkKHgoRXvFtzaPQAM9GVsIFZkpPZzfvc3I4bVywJxnIhkOwiF94EvpgsANpwbxtuTN0aVL18ro1oNtiMBqbPaiT4mLuljWc76jcip4ZijUsFHRnaQIdSfTKHJueVEdCaARwAf3XLZYcRWS5hafhAnSMujmkgdZcuOfpUGy0K8sUeTswEUiVBiBq8qzMzp8GpfKRdjJmgxEsjBOpsKVDEWbY4vaOW5lomG14KtxP"
+#define MYDEVICEID @"3533310733333335333107333333089860113819002470472"
+#define CWTOKEN [[NSUserDefaults standardUserDefaults] objectForKey:@"CWToken"]
+#define CWEMAIL [[NSUserDefaults standardUserDefaults] objectForKey:@"CWEmail"]
+#define NUMBERS @"0123456789/\n"
+#endif /* PrefixHeader_pch */

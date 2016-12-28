@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>aps-environment</key>
+	<string>development</string>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.foundzilla.sneakerlab</string>
+		<string>$(AppIdentifierPrefix)com.foundzilla.ivankajingle</string>
+		<string>$(AppIdentifierPrefix)com.foundzilla.centerpiece</string>
+		<string>$(AppIdentifierPrefix)com.foundzilla.exclusive</string>
+		<string>$(AppIdentifierPrefix)com.foundzilla.hilarytear</string>
+		<string>$(AppIdentifierPrefix)com.foundzilla.sneakercrunch</string>
+		<string>$(AppIdentifierPrefix)com.foundzilla.styl</string>
+		<string>$(AppIdentifierPrefix)com.foundzilla.wantedsole</string>
+	</array>
+</dict>
+</plist>

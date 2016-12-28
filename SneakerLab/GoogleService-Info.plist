@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>121776061585-qeoj1tm4ffbqefn1vh4arcd80bsmiqlf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.121776061585-qeoj1tm4ffbqefn1vh4arcd80bsmiqlf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCWbt1HZjeQjO-wHSHhJkPtFWzqK2ql4nE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>121776061585</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.foundzilla.sneakerlab</string>
+	<key>PROJECT_ID</key>
+	<string>sneakerlab-f30be</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sneakerlab-f30be.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:121776061585:ios:d28f4f04ef99db1d</string>
+	<key>DATABASE_URL</key>
+	<string>https://sneakerlab-f30be.firebaseio.com</string>
+</dict>
+</plist>
